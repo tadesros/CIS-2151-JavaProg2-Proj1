@@ -25,8 +25,7 @@ public class DateOfBirth {
         this.dayOfBirth   = dayOfBirth;
         this.monthOfBirth = monthOfBirth;
         this.yearOfBirth  = yearOfBirth;        
-    }
-    
+    }    
     
     /**** Getters and Setters ******/ 
     
