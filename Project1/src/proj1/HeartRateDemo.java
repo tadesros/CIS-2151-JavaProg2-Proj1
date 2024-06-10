@@ -20,6 +20,12 @@ public class HeartRateDemo {
      */
     public static void main(String[] args) {      
           
+        //Print Intro
+        printProgramIntro();
+        
+        
+        
+        
         //
          heartRateList = new ArrayList<>();
         
@@ -34,5 +40,20 @@ public class HeartRateDemo {
        heartRateList.getFirst().printData();
           
     } //end main    
+    
+    
+     /** CLASS METHODS ***/
+    
+     /**
+      * Method: printProgramIntro
+      */
+     public static void printProgramIntro()
+     {
+        System.out.println("Intro to Program");
+      
+     }
+    
+     
+
    
 } //end demo class
