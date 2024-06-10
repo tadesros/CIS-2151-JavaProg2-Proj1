@@ -1,6 +1,5 @@
 /*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+
  */
 package proj1;
 import java.util.ArrayList;
@@ -29,9 +28,10 @@ public class HeartRateDemo {
           heartRateList.add( new PersonHeartRate("Tom", "desosiers",personDateOfBirth));
           
         // Add students to the classroom
-         System.out.println("Maximum BPM: " + heartRateList.getFirst().maximumHeartRate());
-         System.out.println(heartRateList.getFirst().targetHeartRate());
-        // Display student information         
+       
+        // Display student information  
+        
+       heartRateList.getFirst().printData();
           
     } //end main    
    
