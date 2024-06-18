@@ -2,7 +2,10 @@
 
  */
 package proj1;
+import static java.lang.System.in;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.Scanner;
 
 /**
  *
@@ -27,17 +30,23 @@ public class HeartRateDemo {
         //Print Intro
         displayProgramIntro(); 
         
-        //do - While Loop
+        String promptFirstName = "Enter a first name ";
+        String promptLastName =  "Enter a last name ";
+        String promptBirthMonth = "Enter the month of your birth ";
         
-        //Get New Person HeartRate object
-        
-        //Does user want to add another?
-        
-        //check do-while loop condition
+       //do - While Loop
+       //Get New Person HeartRate object
+       //Does user want to add another?
+       //check do-while loop condition
             
-        
-        //End then print all of the data
+     //  String strFirstName = getString(promptFirstName);
+     //  String strLastName  = getString(promptLastName);
+         int birthMonth = getMonth(promptBirthMonth);
+       
+   //    System.out.println(strFirstName);
+    //   System.out.println(strLastName);
     
+    System.out.println(birthMonth);
         
         //Create DateOfBirth Object with inputted DOB
          DateOfBirth personDateOfBirth = new DateOfBirth(9, 20,2010);
@@ -93,6 +102,7 @@ public class HeartRateDemo {
      
      /**
       * Return Person HeartRate object
+     * @param prompt
       * @return 
       
      public PersonHeartRate getPersonHeartRate()
@@ -111,5 +121,80 @@ public class HeartRateDemo {
      }
      */
      
-   
+     /**
+      * Method: getString
+      * @param prompt - Prompt the user for the data
+      * @return - Input from the user not empty 
+      */     
+     public static String getString(String prompt)
+     {
+         
+         Scanner scnr = new Scanner(System.in);
+         
+      
+        String input;
+        
+        //Check if empty or zero length
+        do
+        {
+            System.out.println(prompt+"(non-empty):");
+            input = scnr.nextLine();
+        }
+        while(input == null || input.trim().length() == 0);
+       
+       
+        return input;
+     }
+     
+     
+     public static Integer getMonth(String prompt)
+     {        
+       
+         Scanner scr = new Scanner(System.in);
+        
+         String strInput;
+         
+         int birthMonth;
+         
+         
+         strInput = scr.nextLine();
+         
+         birthMonth = Integer.parseInt(strInput);
+         
+        
+    
+        return birthMonth;
+    
+     }
+     
+   /*  
+
+     public static void main(String[] args)
+    {
+        Scanner ip = new Scanner(System.in);
+        int a; 
+        System.out.println("Enter Some Input");
+        try{
+            a = ip.nextInt();
+        }
+        catch(InputMismatchException msg){
+            System.out.println("Input Mismatch Exception has occured " + msg.getMessage());
+        }
+    }
+     */
+     public int getNextInt(String promptMessage) {
+    Integer ret; //We use Integer so it can be null
+    do {
+        System.out.println(promptMessage);
+        String str = in.nextLine(); //nextLine is cleaner and doesn't get caught on newline characters
+        try {
+            ret = Integer.parseInt(str);
+        catch(NumberFormatException e) { //Invalid
+            System.out.println("Input an integer."); 
+        }
+    } while(ret==null); //Loop while invalid
+    return ret; //Return result, unboxed
+}
+     
+     
 } //end demo class
