@@ -14,15 +14,15 @@ import java.util.Scanner;
 public class HeartRateDemo {
     
     
-   //**DATA MEMBERS**    
-   static ArrayList<PersonHeartRate> heartRateList;    
+      //**DATA MEMBERS**    
+     static ArrayList<PersonHeartRate> heartRateList;    
     
      
-    /**
+       /**
      * Method: Main
      * @param args the command line arguments
      */
-    public static void main(String[] args) {  
+       public static void main(String[] args) {  
         
          //Declare a HeartRateList ArrayList
          heartRateList = new ArrayList<>();
@@ -41,16 +41,13 @@ public class HeartRateDemo {
        //Does user want to add another?
        //check do-while loop condition
             
-         String strFirstName = getString(promptFirstName);
-         String strLastName  = getString(promptLastName);
+         String strFirstName = getName(promptFirstName);
+         String strLastName  = getName(promptLastName);
          int birthMonth  = getIntBirthMonth(promptBirthMonth);
          int dayOfBirth  = getIntBirthDay(promptBirthDay);
          int yearOfBirth = getIntBirthYear(promptBirthYear);
          
-    //     System.out.println(strFirstName); 
-     //    System.out.println(strLastName);
-    //     System.out.println(birthMonth);
-            
+           
         //Create DateOfBirth Object with inputted DOB
          DateOfBirth personDateOfBirth = new DateOfBirth(dayOfBirth, birthMonth,yearOfBirth);
         
@@ -67,7 +64,7 @@ public class HeartRateDemo {
      /**
       * Method: printProgramIntro
       */
-     public static void displayProgramIntro()
+     static void displayProgramIntro()
      {
         System.out.println("Intro to Program");
       
@@ -79,26 +76,17 @@ public class HeartRateDemo {
       * return valid String.
       * @return 
       */
-     public String getFirstName()
+     static String getName(String prompt)
      {
-         String name ="";
-         
+         String name ="";         
+      
+         do{         
+                    name = getString(prompt);      
+          
+         }while(isNumber(name));
+          
          return name;
      }
-     
-     /**
-      * Prompt user for their Last Name
-      * verify it is a string if not valid keep prompting 
-      * return valid String.
-      * @return 
-      */
-     public String getLastName()
-     {
-         String name ="";
-         
-         return name;
-     }
-     
      
      /**
       * Return Person HeartRate object
@@ -121,9 +109,6 @@ public class HeartRateDemo {
      }
      */
      
-
-     
-     
  
    /*  
 
@@ -142,17 +127,17 @@ public class HeartRateDemo {
      */
      
        /**
-        * getIntDayOfMonth
+        * getIntBirthDay
         * @param promptMessage - Message asking user to enter the month of birth
         * @return an integer representing a valid day of birth 1 to 31 greater than zero 
         */
-       public static int getIntBirthDay(String promptMessage) {              
+       static int getIntBirthDay(String promptMessage) {              
                   
                   Integer number;                 
                   String input;                   
                   do{
                       
-                     number = tryParse(getString(promptMessage)); 
+                     number = tryIntegerParse(getString(promptMessage)); 
                    
                   }while(number == null || number <=0 || number > 31);
              
@@ -163,13 +148,13 @@ public class HeartRateDemo {
         * @param promptMessage - Message asking user to enter the month of birth
         * @return an integer representing a valid number for month 1 - 12 
         */
-       public static int getIntBirthMonth(String promptMessage) {              
+       static int getIntBirthMonth(String promptMessage) {              
                   
                   Integer number;                 
                   String input;                   
                   do{
                       
-                     number = tryParse(getString(promptMessage)); 
+                     number = tryIntegerParse(getString(promptMessage)); 
                    
                   }while(number == null || number <=0 || number > 12);
              
@@ -180,7 +165,7 @@ public class HeartRateDemo {
         * @param promptMessage - Message asking user to enter the month of birth
         * @return an integer representing a valid number for month: Greater than zero and 4 digits 
         */
-       public static int getIntBirthYear(String promptMessage) {              
+        static int getIntBirthYear(String promptMessage) {              
                   
                   Integer number;                 
                   String input;  
@@ -189,7 +174,7 @@ public class HeartRateDemo {
                   
                   do{
                       
-                     number = tryParse(getString(promptMessage)); 
+                     number = tryIntegerParse(getString(promptMessage)); 
                      
                      //Get length of number represented in a string 
                      //This will allow us to check the number of digits
@@ -206,7 +191,7 @@ public class HeartRateDemo {
         * @param prompt - Prompt the user for the data
         * @return - Input from the user not empty 
         */   
-       public static String getString(String prompt)
+       static String getString(String prompt)
        {
            Scanner scnr = new Scanner(System.in);
            String input;
@@ -221,14 +206,49 @@ public class HeartRateDemo {
 
 
           return input;
-       }       
+       }  
+       /**
+         * checkStringType
+         * @param testString
+         * @return 
+         */
+       static String checkStringType(String testString)
+       {
+            
+            String strType;
+            
+                // Function returns true if all characters
+                // are in the range '0' - '9'
+                if (isNumber(testString)) {
+                    System.out.println("Integer");
+                    strType = "Integer";
+                } else {
+                    System.out.println("String");
+                    strType = "String";
+                }
+    
+                return strType;
+        }       
+       /**
+             * isNumber
+             * @param s
+             * @return return true or false if it is a number 
+             */
+       static boolean isNumber(String s) {
+                    for (int i = 0; i < s.length(); i++) {
+                        if (!Character.isDigit(s.charAt(i))) {
+                            return false;
+                        }
+                }
+                return true;
+            }        
        /**
         * tryParse
         * @param text : String value to be checked if valid Integer
         * @return  : return null if not a valid integer string or else return the integer 
         *            representation of the string.
         */
-       public static Integer tryParse(String text) {
+       static Integer tryIntegerParse(String text) {
                 try {
                   return Integer.parseInt(text);
                 } catch (NumberFormatException e) {
@@ -236,4 +256,4 @@ public class HeartRateDemo {
                 }
         }  
        
-} //end demo class
+} //end heartRateDemo class
