@@ -32,32 +32,32 @@ public class HeartRateDemo {
         
         String promptFirstName = "Enter a first name ";
         String promptLastName =  "Enter a last name ";
-        String promptBirthMonth = "Enter the month of your birth ";
-        
+        String promptBirthMonth = "Enter the birth month ";
+        String promptBirthDay = "Enter the birth day ";
+        String promptBirthYear = "Enter the year of birth ";
+                
        //do - While Loop
        //Get New Person HeartRate object
        //Does user want to add another?
        //check do-while loop condition
             
-     //  String strFirstName = getString(promptFirstName);
-     //  String strLastName  = getString(promptLastName);
-         int birthMonth = getMonth(promptBirthMonth);
-       
-   //    System.out.println(strFirstName);
-    //   System.out.println(strLastName);
-    
-    System.out.println(birthMonth);
-        
+         String strFirstName = getString(promptFirstName);
+         String strLastName  = getString(promptLastName);
+         int birthMonth  = getIntBirthMonth(promptBirthMonth);
+         int dayOfBirth  = getIntBirthDay(promptBirthDay);
+         int yearOfBirth = getIntBirthYear(promptBirthYear);
+         
+    //     System.out.println(strFirstName); 
+     //    System.out.println(strLastName);
+    //     System.out.println(birthMonth);
+            
         //Create DateOfBirth Object with inputted DOB
-         DateOfBirth personDateOfBirth = new DateOfBirth(9, 20,2010);
+         DateOfBirth personDateOfBirth = new DateOfBirth(dayOfBirth, birthMonth,yearOfBirth);
         
         //Add new Array List entry to the ListArray
         heartRateList.add( new PersonHeartRate("Tom", "desosiers",personDateOfBirth));
-        
-                  
-
-        
-       heartRateList.getFirst().printData();
+       
+         heartRateList.getFirst().printData();
           
     } //end main    
     
@@ -121,52 +121,10 @@ public class HeartRateDemo {
      }
      */
      
-     /**
-      * Method: getString
-      * @param prompt - Prompt the user for the data
-      * @return - Input from the user not empty 
-      */     
-     public static String getString(String prompt)
-     {
-         
-         Scanner scnr = new Scanner(System.in);
-         
-      
-        String input;
-        
-        //Check if empty or zero length
-        do
-        {
-            System.out.println(prompt+"(non-empty):");
-            input = scnr.nextLine();
-        }
-        while(input == null || input.trim().length() == 0);
-       
-       
-        return input;
-     }
+
      
      
-     public static Integer getMonth(String prompt)
-     {        
-       
-         Scanner scr = new Scanner(System.in);
-        
-         String strInput;
-         
-         int birthMonth;
-         
-         
-         strInput = scr.nextLine();
-         
-         birthMonth = Integer.parseInt(strInput);
-         
-        
-    
-        return birthMonth;
-    
-     }
-     
+ 
    /*  
 
      public static void main(String[] args)
@@ -182,19 +140,100 @@ public class HeartRateDemo {
         }
     }
      */
-     public int getNextInt(String promptMessage) {
-    Integer ret; //We use Integer so it can be null
-    do {
-        System.out.println(promptMessage);
-        String str = in.nextLine(); //nextLine is cleaner and doesn't get caught on newline characters
-        try {
-            ret = Integer.parseInt(str);
-        catch(NumberFormatException e) { //Invalid
-            System.out.println("Input an integer."); 
-        }
-    } while(ret==null); //Loop while invalid
-    return ret; //Return result, unboxed
-}
      
-     
+       /**
+        * getIntDayOfMonth
+        * @param promptMessage - Message asking user to enter the month of birth
+        * @return an integer representing a valid day of birth 1 to 31 greater than zero 
+        */
+       public static int getIntBirthDay(String promptMessage) {              
+                  
+                  Integer number;                 
+                  String input;                   
+                  do{
+                      
+                     number = tryParse(getString(promptMessage)); 
+                   
+                  }while(number == null || number <=0 || number > 31);
+             
+                  return number;               
+       }      
+       /**
+        * getIntBirthMonth
+        * @param promptMessage - Message asking user to enter the month of birth
+        * @return an integer representing a valid number for month 1 - 12 
+        */
+       public static int getIntBirthMonth(String promptMessage) {              
+                  
+                  Integer number;                 
+                  String input;                   
+                  do{
+                      
+                     number = tryParse(getString(promptMessage)); 
+                   
+                  }while(number == null || number <=0 || number > 12);
+             
+                  return number;               
+       }   
+       /**
+        * getYearOfBirth
+        * @param promptMessage - Message asking user to enter the month of birth
+        * @return an integer representing a valid number for month: Greater than zero and 4 digits 
+        */
+       public static int getIntBirthYear(String promptMessage) {              
+                  
+                  Integer number;                 
+                  String input;  
+                  Integer length;
+                  
+                  
+                  do{
+                      
+                     number = tryParse(getString(promptMessage)); 
+                     
+                     //Get length of number represented in a string 
+                     //This will allow us to check the number of digits
+                     length = String.valueOf(number).length();
+                     
+                    
+                   
+                  }while(number == null || number <=0 || length != 4);
+             
+                  return number;               
+       }        
+       /**
+        * Method: getString
+        * @param prompt - Prompt the user for the data
+        * @return - Input from the user not empty 
+        */   
+       public static String getString(String prompt)
+       {
+           Scanner scnr = new Scanner(System.in);
+           String input;
+
+          //Check if empty or zero length
+          do
+          {
+              System.out.println(prompt+"(non-empty):");
+              input = scnr.nextLine();
+          }
+          while(input == null || input.trim().length() == 0);
+
+
+          return input;
+       }       
+       /**
+        * tryParse
+        * @param text : String value to be checked if valid Integer
+        * @return  : return null if not a valid integer string or else return the integer 
+        *            representation of the string.
+        */
+       public static Integer tryParse(String text) {
+                try {
+                  return Integer.parseInt(text);
+                } catch (NumberFormatException e) {
+                  return null;
+                }
+        }  
+       
 } //end demo class
