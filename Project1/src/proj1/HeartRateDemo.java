@@ -10,14 +10,14 @@ import java.util.ArrayList;
 public class HeartRateDemo {
 
       //**DATA MEMBERS**    
-     static ArrayList<PersonHeartRate> heartRateList;   
-     static InputOutput ioObj;
+      static ArrayList<PersonHeartRate> heartRateList;   
+      static InputOutput ioObj;
      
-     static   String strFirstName;
-     static   String strLastName;
-     static   int dayOfBirth;
-     static   int monthOfBirth;
-     static   int yearOfBirth;
+      static   String strFirstName;
+      static   String strLastName;
+      static   int dayOfBirth;
+      static   int monthOfBirth;
+      static   int yearOfBirth;
      
       static  String promptFirstName = "Enter first name: ";
       static  String promptLastName =  "Enter last name: ";
@@ -49,7 +49,7 @@ public class HeartRateDemo {
               continueChoice =  getUserChoice(promptForMoreEntry);
               
              //Create DateOfBirth Object with inputted DOB
-              DateOfBirth personDateOfBirth = new DateOfBirth(dayOfBirth,  monthOfBirth,yearOfBirth);
+              DateOfBirth personDateOfBirth = new DateOfBirth(monthOfBirth,dayOfBirth,yearOfBirth);
                    
              //Add PersonHeartRate record to the arrayList
                heartRateList.add( new PersonHeartRate(strFirstName,strLastName,personDateOfBirth));
@@ -60,15 +60,13 @@ public class HeartRateDemo {
         
         //Print all records
         printRecords();
-        
-        
+          
         
           
     } //end main    
     
    
-     // Class Methods
-     
+     // Class Methods     
      
      /**
       * Method: printRecords
@@ -81,16 +79,8 @@ public class HeartRateDemo {
             {
                // Printing and display the elements in ArrayList           
                  heartRateList.get(i).printData();
-            }        
-                    
+            }                      
      }
-     
-     
-     
-     
-     
-     
-     
      
      
      /**
@@ -119,11 +109,12 @@ public class HeartRateDemo {
       */
      static void displayProgramIntro()
      {
+        System.out.println(""); 
         System.out.println("***********************************");
         System.out.println("Welcome to the HeartRate Calculator");     
         System.out.println("***********************************");
-        System.out.println("");
-        System.out.println("--- Record Entry ---");
+      
+
      }
     
 
@@ -131,51 +122,19 @@ public class HeartRateDemo {
      {
          ioObj =  new InputOutput();
          
+         
+        System.out.println("");
+        System.out.println("--- New Record Entry ---");
+        System.out.println("");
+         
+         
          setStrFirstName(ioObj.getStringInput(promptFirstName));
          setStrLastName(ioObj.getStringInput(promptLastName));
-         setDayOfBirth(ioObj.getDayOfMonth(promptBirthDay));
          setMonthOfBirth(ioObj.getMonth(promptBirthMonth));
+         setDayOfBirth(ioObj.getDayOfMonth(promptBirthDay));        
          setYearOfBirth(ioObj.getYear(promptBirthYear));         
      }
-     
-     /**
-      * Return Person HeartRate object
-     * @param prompt
-      * @return 
-      
-     public PersonHeartRate getPersonHeartRate()
-     {
-         
-        //Get First Name from User
-        
-        //Get Last Name from User
-        
-        //Get Date of Birth from User
-         
-         
-         PersonHeartRate newPersonHeartRate;
-         
-         return newPersonHeartRate;
-     }
-     */
-     
- 
-   /*  
-
-     public static void main(String[] args)
-    {
-        Scanner ip = new Scanner(System.in);
-        int a; 
-        System.out.println("Enter Some Input");
-        try{
-            a = ip.nextInt();
-        }
-        catch(InputMismatchException msg){
-            System.out.println("Input Mismatch Exception has occured " + msg.getMessage());
-        }
-    }
-     */
-     
+          
     public static String getStrFirstName() {
         return strFirstName;
     }
@@ -215,8 +174,5 @@ public class HeartRateDemo {
     public static void setYearOfBirth(int yearOfBirth) {
         HeartRateDemo.yearOfBirth = yearOfBirth;
     }       
-     
-     
-
-       
+          
 } //end heartRateDemo class

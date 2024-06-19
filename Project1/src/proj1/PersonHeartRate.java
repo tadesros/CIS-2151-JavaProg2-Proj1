@@ -24,8 +24,8 @@ public final class PersonHeartRate {
     private String firstName;
     private String lastName;
     private DateOfBirth birthDate;    
-    
-      
+    private Integer age;
+
     /**
      * Method: PersonHeartRate constructor taking three parameters
      * @param firstName
@@ -36,7 +36,8 @@ public final class PersonHeartRate {
     {          
         this.firstName = firstName;
         this.lastName = lastName;
-        this.birthDate = birthDate;        
+        this.birthDate = birthDate;       
+        this.age = ageInYears();
     }
    
     /** Getters and Setters **/  
@@ -81,8 +82,8 @@ public final class PersonHeartRate {
      * Method: getBirthDate
      * @return birthDate
      */   
-    public DateOfBirth getBirthDate() {
-        return birthDate;
+    public String  getBirthDate() {
+        return birthDate.formattedBirthDate();
     }
     /**
      * Method: setBirthDate 
@@ -103,6 +104,7 @@ public final class PersonHeartRate {
         // Birthdate -- year, month, or day.
         LocalDate bdate = LocalDate.of(this.birthDate.getYearOfBirth(), this.birthDate.getMonthOfBirth(), this.birthDate.getDayOfBirth()); 
   
+          
         // Get current date and save to a localDate Object 
         LocalDate currentDate = LocalDate.now(); 
         
@@ -143,10 +145,21 @@ public final class PersonHeartRate {
     public void printData()
     {
         System.out.println("--------------------------------------------------");
-        System.out.println("Name: "+ this.lastName + " , " + this.firstName); 
+        System.out.println("Name: "+ this.lastName + " , " + this.firstName);
+        System.out.println("Your birthday is  " + this.getBirthDate());   
+        System.out.println("For your age " + this.getAge() + " your: ");          
         System.out.println("Maximum Heart Rate: " + this.maximumHeartRate() + " beats per minute"); 
-        System.out.println("Target Heart Rate Range: " + this.targetHeartRate() + " beats per minute"); 
+        System.out.println("Target Heart Rate Range: " + this.targetHeartRate() + " beats per minute");  
         System.out.println("--------------------------------------------------");
     }
+      
     
+    public Integer getAge() {
+        return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
+    }
+       
 }

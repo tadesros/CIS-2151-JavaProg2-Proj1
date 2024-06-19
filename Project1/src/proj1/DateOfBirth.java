@@ -9,8 +9,8 @@ package proj1;
 public class DateOfBirth {    
     
     //Private Data
-    private Integer dayOfBirth;
     private Integer monthOfBirth;
+    private Integer dayOfBirth;    
     private Integer yearOfBirth;      
         
     
@@ -21,9 +21,9 @@ public class DateOfBirth {
      * @param yearOfBirth 
      */    
     public DateOfBirth(Integer monthOfBirth, Integer dayOfBirth, Integer yearOfBirth)
-    {        
-        this.dayOfBirth   = dayOfBirth;
-        this.monthOfBirth = monthOfBirth;
+    {   
+        this.monthOfBirth = monthOfBirth;     
+        this.dayOfBirth   = dayOfBirth;        
         this.yearOfBirth  = yearOfBirth;        
     }    
     
@@ -82,5 +82,20 @@ public class DateOfBirth {
     public void setYearOfBirth(Integer yearOfBirth) {
         this.yearOfBirth = yearOfBirth;
     }  
+    
+    
+     /**
+     * Method: printBirthDate()
+     * Returns Birthdate as a String
+     */
+    public String formattedBirthDate() {
+        
+        String formattedBirthDay;
+        
+        formattedBirthDay = this.dayOfBirth + "/" + this.monthOfBirth + "/" + this.yearOfBirth;
+     
+        return formattedBirthDay;
+    }  
+    
     
 }//end class dateOfBirth
