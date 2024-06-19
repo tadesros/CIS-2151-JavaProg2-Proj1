@@ -11,7 +11,7 @@ import java.time.Period;
  * The class provides functions to calculate a persons age in years 
  * based from the current date.
  * This class calculates a persons maximum heart rate and target heart rate.
- * @author tomad
+ * @author Tom DesRosiers
  */
 
 public final class PersonHeartRate {

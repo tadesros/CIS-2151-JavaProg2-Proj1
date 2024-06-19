@@ -4,7 +4,7 @@ package proj1;
  * Class: DateOf Birth
  * This class is an object to contain the date of birth 
  * contained in three Integers for Day , Month and Year
- * @author tomad
+ * @author Tom DesRosiers
  */
 public class DateOfBirth {    
     
